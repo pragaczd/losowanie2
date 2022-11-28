@@ -23,7 +23,6 @@ public class LosowanieController {
     public ResponseEntity<ResponseMessage> losuj(@RequestBody String imie) {
         imie = ImieMapper.sprawdzImie(imie);
         if (losowanieService.czyJuzLosowalem(imie)) {
-            System.out.println("asdf");
             Uzytkownicy uzykownikLosujacy = losowanieService.znajdzUzytkownikaLosujacegoIUstawCzyLosuje(imie);
             if (uzykownikLosujacy == null) {
                 return ResponseEntity.ok(new ResponseMessage("Nie ma takiego losujacego", null));
